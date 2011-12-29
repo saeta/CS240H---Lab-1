@@ -8,4 +8,5 @@ Cabal-Version: >= 1.2
 
 Executable lab1
   Main-is: lab1.hs
+  Ghc-options: -Wall
   Build-Depends: base >= 3, haskell98
