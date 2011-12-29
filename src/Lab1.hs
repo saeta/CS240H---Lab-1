@@ -36,9 +36,14 @@ calculateNumHashes maxLen maxOcc' input =
     in map (\(s, occ) -> (s, truncate $
              (fromIntegral occ) / maxOcc * maxHashes)) input
 
-processFile :: String -> [(String, Int)]
+processFile :: String -> [String]
 processFile sourceText = 
     let processed = processInput sourceText
-    in filter (\(_, b) -> b > 0) $
-      calculateNumHashes (maxLengthToken processed) 
-        (maxOccurences processed) processed
+        maxTokLen = maxLengthToken processed
+        intermediate = filter (\(_, b) -> b > 0) $
+          calculateNumHashes (maxLengthToken processed) 
+            (maxOccurences processed) processed
+    in map (\(tok, numHash) -> 
+               take (maxTokLen + 1) (tok ++ (repeat ' '))
+                 ++ (take numHash $ repeat '#') ++ "\n")
+           intermediate
