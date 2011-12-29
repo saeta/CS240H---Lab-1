@@ -1,8 +1,8 @@
 module Lab1(processFile) where
-import Char
 import Data.Char
-import List
+import Data.List
 import Data.Function
+import Control.Arrow
 
 splitFile :: String -> [String]
 splitFile contents = map stripTailPunct $ words $ map toLower contents
@@ -12,29 +12,29 @@ stripTailPunct word = stp $ reverse word
     where stp (w:ws) = if isPunctuation w then stp ws else reverse (w:ws)
 
 groupTokens :: [String] -> [(String, Int)]
-groupTokens = map (\xs -> (head xs, length xs)) . group . sort
+groupTokens = map (head Control.Arrow.&&& length) . group . sort
 
 processInput :: String -> [(String, Int)]
 processInput = reverse . sortBy (compare `on` snd) . groupTokens . splitFile
 
 maxLengthToken :: [(String, Int)] -> Int
-maxLengthToken l = foldl maxLen 0 l
+maxLengthToken = foldl maxLen 0
 
 maxLen :: Int -> (String, Int) -> Int
 maxLen a (b, _) = max a $ length b
 
 maxOccurences :: [(String, Int)] -> Int
-maxOccurences l = foldl maxOcc 0 l
+maxOccurences = foldl maxOcc 0
 
 maxOcc :: Int -> (String, Int) -> Int
 maxOcc a (_, b) = max a b
 
 calculateNumHashes :: Int -> Int -> [(String, Int)] -> [(String, Int)]
-calculateNumHashes maxLen maxOcc' input = 
-    let maxHashes = fromIntegral $ 80 - 1 - maxLen
-        maxOcc = fromIntegral maxOcc'
+calculateNumHashes maxL maxO' input =
+    let maxHashes = fromIntegral $ 80 - 1 - maxL
+        maxO = fromIntegral maxO'
     in map (\(s, occ) -> (s, truncate $
-             (fromIntegral occ) / maxOcc * maxHashes)) input
+             fromIntegral occ / maxO * maxHashes)) input
 
 processFile :: String -> [String]
 processFile sourceText = 
@@ -44,6 +44,6 @@ processFile sourceText =
           calculateNumHashes (maxLengthToken processed) 
             (maxOccurences processed) processed
     in map (\(tok, numHash) -> 
-               take (maxTokLen + 1) (tok ++ (repeat ' '))
-                 ++ (take numHash $ repeat '#') ++ "\n")
+               take (maxTokLen + 1) (tok ++ repeat ' ')
+                 ++ replicate numHash '#' ++ "\n")
            intermediate

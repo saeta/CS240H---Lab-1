@@ -1,6 +1,7 @@
 import System
 import Lab1
 
+main :: IO ()
 main = do
   f <- getArgs
   let files = map readFile f
