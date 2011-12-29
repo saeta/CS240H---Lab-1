@@ -15,7 +15,12 @@ hopefully learning functional programming in Haskell along the way.
 ## Linting ##
     hlint src
 
-## Testing ##
-**TODO**
+# Conclusion #
+I did this assignment in one night. The git commit logs are an accurate
+representation of how long I took to do this. I spent a lot of time looking
+up the way to try and do things right. I also got stuck when I couldn't
+figure out how to lift things into the `IO Monad`. I now know about
+`sequence` and `liftM` (at least a bit). While implementing, I took a few
+breaks, but not too many.
 
 [cs240h]: http://www.scs.stanford.edu/11au-cs240h/ "CS240H Website Fall 11"
