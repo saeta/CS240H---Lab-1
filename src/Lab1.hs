@@ -10,6 +10,7 @@ splitFile contents = map stripTailPunct $ words $ map toLower contents
 stripTailPunct :: String -> String
 stripTailPunct word = stp $ reverse word
     where stp (w:ws) = if isPunctuation w then stp ws else reverse (w:ws)
+          stp []     = []
 
 groupTokens :: [String] -> [(String, Int)]
 groupTokens = map (head Control.Arrow.&&& length) . group . sort
