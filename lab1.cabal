@@ -1,12 +1,16 @@
-Name: lab1
-Version: 0.0
-Description: Simple Implementation of Lab1 for CS240H
-License: GPL
-Maintainer: saeta@cs.stanford.edu
-Build-Type: Simple
-Cabal-Version: >= 1.2
+Name:                lab1
+Version:             0.1
+Description:         Simple Implementation of Lab1 for CS240H
+License:             GPL
+Author:              Brennan Saeta
+Maintainer:          saeta@cs.stanford.edu
+Build-Type:          Simple
+Homepage:            https://github.com/saeta/CS240H---Lab-1
+Cabal-Version:       >= 1.2
+Category:            Learning
+Synopsis:            Teaching myself some Haskell!
 
 Executable lab1
   Main-is: lab1.hs
   Ghc-options: -Wall
-  Build-Depends: base >= 3, haskell98
+  Build-Depends: base, haskell98
