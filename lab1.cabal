@@ -1,0 +1,11 @@
+Name: lab1
+Version: 0.0
+Description: Simple Implementation of Lab1 for CS240H
+License: GPL
+Maintainer: saeta@cs.stanford.edu
+Build-Type: Simple
+Cabal-Version: >= 1.2
+
+Executable lab1
+  Main-is: lab1.hs
+  Build-Depends: base >= 3, haskell98
