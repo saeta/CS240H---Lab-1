@@ -10,7 +10,8 @@ Cabal-Version:       >= 1.2
 Category:            Learning
 Synopsis:            Teaching myself some Haskell!
 
-Executable lab1
-  Main-is: lab1.hs
-  Ghc-options: -Wall
-  Build-Depends: base, haskell98
+Executable lab1-saeta
+  Main-is:           lab1.hs
+  Ghc-options:       -Wall
+  HS-Source-Dirs:    src
+  Build-Depends:     base, haskell98

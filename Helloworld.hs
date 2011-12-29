@@ -13,7 +13,7 @@ main = do
 --  putStrLn $ show allFiles
   putStrLn "Hello world!" -}
 
-
+{-
 stuff :: IO [String] -> IO ()
 stuff a = do
   foo <- a
@@ -23,3 +23,4 @@ stuff a = do
 
 main = do
   stuff getArgs
+-}
