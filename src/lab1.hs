@@ -6,6 +6,9 @@ main = do
   f <- getArgs
   let files = map readFile f
   contents <- sequence files
-  let unlined = foldl (++) "" contents
+  stdinContents <- getContents
+  let unlined = if not $ null f
+                then foldl (++) "" contents
+                else stdinContents
   let processed = processFile unlined
   putStr $ foldl (++) "" processed
