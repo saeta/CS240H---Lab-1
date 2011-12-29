@@ -5,7 +5,7 @@ import Data.Function
 import Control.Arrow
 
 splitFile :: String -> [String]
-splitFile contents = filter (\s -> not $ null s) $ map stripTailPunct $ words $
+splitFile contents = filter (not . null) $ map stripTailPunct $ words $
     map toLower contents
 
 stripTailPunct :: String -> String
